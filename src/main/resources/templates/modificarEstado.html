@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Practica</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <header th:replace="layaout/plantilla :: header"/>
+                    <h1>Datos de Estados:</h1>
+                    <a th:href="@{/}">Regresar</a>
+                    <br/>
+                    <div  style="padding: 100px 500px; font-size: 30px">
+                        <form th:action="@{/guardarEstado}"
+                              method="post"  
+                              th:object="${estado}">
+
+
+                            <input type="hidden" name="id_estado" th:field="*{id_estado}">
+
+                                <label for="nombre_estado">Nombre:</label>
+                                <input type="text" name="nombre_estado" th:field="*{nombre_estado}"/>
+                                <br/>
+
+                                <label for="capital">Capital:</label>
+                                <input type="text" name="capital" th:field="*{capital}"/>
+                                <br/>
+
+                                <label for="poblacion">Poblacion:</label>
+                                <input type="number" name="poblacion" th:field="*{poblacion}"/>
+                                <br/>
+
+                                <label for="costas">Costas:</label>
+                                <input type="checkbox" name="costas" th:field="*{costas}"/>
+                                <br/>
+
+                                <label for="enviar">Enviar</label>
+                                <input type="submit" name="enviar" value="Enviar"/>
+                                <br/>
+
+             </form>
+        </div>
+    </body>
+    <footer th:replace="layaout/plantilla :: footer"/>
+</html>

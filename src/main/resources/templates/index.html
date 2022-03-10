@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="hhtp://www.w3.org./1999/xhtml">>
     <head>
         <title>Practica</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Capital</th>
-                    <th>Poblacion</th>
-                    <th>Costas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="estado: ${estados}">
-                    <td th:text="${estado.id_estado}"></td>
-                    <td th:text="${estado.nombre_estado}"></td>
-                    <td th:text="${estado.capital}"></td>
-                    <td th:text="${estado.poblacion}"></td>
-                    <td th:text="${estado.costas}"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        
+        <header th:replace="layaout/plantilla :: header"/>
+        <h2>Lista de Estados:</h2>
+        <a th:href="@{/nuevoEstado}">Nuevo Estado</a>
+        <div style="padding: 100px 500px">
+            <table border="1" style="background-color: beige; border: black solid medium" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Capital</th>
+                        <th>Poblacion</th>
+                        <th>Costas</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="estado: ${estados}">
+                        <td th:text="${estado.id_estado}"></td>
+                        <td th:text="${estado.nombre_estado}"></td>
+                        <td th:text="${estado.capital}"></td>
+                        <td th:text="${estado.poblacion}"></td>
+                        <td th:text="${estado.costas}"></td>
+                        <td><a th:href="@{/eliminarEstado/} + ${estado.id_estado}">Eliminar</a></td>
+                        <td><a th:href="@{/modificarEstado/} + ${estado.id_estado}">Modificar</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <footer th:replace="layaout/plantilla :: footer"/>
     </body>
 </html>
